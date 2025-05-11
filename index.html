@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>عيادة الابتسامة المشرقة</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/smoothness/jquery-ui.css" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet" />
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #f4fafe;
+            padding-top: 60px;
+        }
+
+        section {
+            display: none;
+            padding: 50px 0;
+            min-height: calc(100vh - 120px);
+        }
+
+        #homeSection {
+            display: block;
+            background: linear-gradient(rgba(0, 153, 204, 0.6), rgba(0, 153, 204, 0.6)),
+                url('assets/images/dental-hero.jpg') center/cover no-repeat;
+            color: white;
+            text-align: center;
+            height: calc(100vh - 60px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            background-color: #0099cc;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #007ba7;
+        }
+
+        .form-section {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        footer {
+            background-color: #0099cc;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .navbar {
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-card {
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        #adminBtn {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 1000;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-primary" href="#" onclick="showSection('homeSection')">الابتسامة
+                المشرقة</a>
+            <div class="ms-auto">
+                <button class="btn btn-outline-primary me-2" onclick="showSection('homeSection')">الرئيسية</button>
+                <button class="btn btn-outline-primary me-2" onclick="showSection('servicesSection')">خدماتنا</button>
+                <button class="btn btn-primary" onclick="showSection('bookingSection')">احجز الآن</button>
+                <button class="btn btn-outline-primary me-2" onclick="window.location.href='booking-lookup.php'">مراجعة
+                    الحجز</button>
+            </div>
+        </div>
+    </nav>
+
+    <section id="homeSection">
+        <div class="container">
+            <h1 class="display-4 fw-bold">ابتسامتك تبدأ من هنا</h1>
+            <p class="lead mt-3">نقدم أفضل خدمات طب الأسنان بأحدث التقنيات</p>
+            <div class="mt-4">
+                <button class="btn btn-light px-4 py-2 me-2" onclick="showSection('bookingSection')">احجز موعدك
+                    الآن</button>
+                <button class="btn btn-outline-light px-4 py-2" onclick="showSection('servicesSection')">تعرف على
+                    خدماتنا</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="servicesSection">
+        <div class="container">
+            <h2 class="text-center mb-5 text-primary">خدماتنا</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card service-card h-100" onclick="selectService('تنظيف الأسنان')">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">تنظيف الأسنان</h5>
+                            <p class="card-text">تنظيف احترافي لإزالة الجير والتصبغات</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card service-card h-100" onclick="selectService('تبييض الأسنان')">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">تبييض الأسنان</h5>
+                            <p class="card-text">حصول على ابتسامة أكثر بياضاً وإشراقاً</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card service-card h-100" onclick="selectService('تقويم الأسنان')">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">تقويم الأسنان</h5>
+                            <p class="card-text">تصحيح إطباق الأسنان وتحسين المظهر</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card service-card h-100" onclick="selectService('حشوات وعلاج العصب')">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">حشوات وعلاج العصب</h5>
+                            <p class="card-text">علاج تسوس الأسنان وحماية العصب</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card service-card h-100" onclick="selectService('زراعة الأسنان')">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">زراعة الأسنان</h5>
+                            <p class="card-text">حل دائم وفعال لتعويض الأسنان المفقودة</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card service-card h-100" onclick="selectService('جراحة الفم')">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">جراحة الفم</h5>
+                            <p class="card-text">إجراءات جراحية متخصصة للأسنان والفكين</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <button class="btn btn-primary" onclick="showSection('bookingSection')">احجز موعد الآن</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="bookingSection">
+        <div class="container">
+            <div class="form-section mx-auto col-lg-8">
+                <h2 class="mb-4 text-center text-primary fw-bold">حجز موعد</h2>
+                <form id="bookingForm">
+                    <div class="mb-3">
+                        <label for="fullName" class="form-label">الاسم الكامل</label>
+                        <input type="text" class="form-control" id="fullName" required />
+                    </div>
+                    <div class="mb-3">
+                        <label for="phone" class="form-label">رقم الجوال</label>
+                        <input type="tel" class="form-control" id="phone" required />
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">البريد الإلكتروني</label>
+                        <input type="email" class="form-control" id="email" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="service" class="form-label">اختر الخدمة</label>
+                        <select class="form-select" id="service" required>
+                            <option value="">-- اختر --</option>
+                            <option>تنظيف الأسنان</option>
+                            <option>تبييض الأسنان</option>
+                            <option>تقويم الأسنان</option>
+                            <option>حشوات وعلاج العصب</option>
+                            <option>زراعة الأسنان</option>
+                            <option>جراحة الفم</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="date" class="form-label">التاريخ</label>
+                        <input type="text" class="form-control" id="date" required />
+                    </div>
+                    <div class="mb-3">
+                        <label for="time" class="form-label">الوقت</label>
+                        <select class="form-select" id="time" required>
+                            <option value="">-- اختر الوقت --</option>
+                            <option>10:00 صباحًا</option>
+                            <option>12:00 ظهرًا</option>
+                            <option>2:00 مساءً</option>
+                            <option>4:00 مساءً</option>
+                            <option>6:00 مساءً</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">طريقة استلام التأكيد</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="confirmation_method" id="smsMethod"
+                                value="sms" checked>
+                            <label class="form-check-label" for="smsMethod">رسالة SMS</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="confirmation_method" id="whatsappMethod"
+                                value="whatsapp">
+                            <label class="form-check-label" for="whatsappMethod">واتساب</label>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100 mt-3">تأكيد الحجز</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section id="confirmationSection">
+        <div class="container text-center">
+            <div class="form-section mx-auto col-lg-6">
+                <h2 class="text-success mb-4">تم حجز موعدك بنجاح!</h2>
+                <p><strong>الاسم:</strong> <span id="confName"></span></p>
+                <p><strong>الخدمة:</strong> <span id="confService"></span></p>
+                <p><strong>التاريخ:</strong> <span id="confDate"></span></p>
+                <p><strong>الوقت:</strong> <span id="confTime"></span></p>
+                <button class="btn btn-outline-primary mt-3" onclick="showSection('homeSection')">العودة
+                    للرئيسية</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>جميع الحقوق محفوظة &copy; 2025 - عيادة الابتسامة</p>
+    </footer>
+
+    <!-- Admin Button -->
+    <button id="adminBtn" class="btn btn-warning btn-sm" onclick="window.location.href='login.php'">
+        دخول الطبيب
+    </button>
+
+    <script>
+        function showSection(id) {
+            $('section').hide();
+            $('#' + id).fadeIn(300);
+            if (id === 'homeSection') {
+                $('html, body').animate({ scrollTop: 0 }, 'fast');
+            } else {
+                $('html, body').animate({ scrollTop: $('#' + id).offset().top - 70 }, 'fast');
+            }
+        }
+
+        function selectService(service) {
+            $('#service').val(service);
+            showSection('bookingSection');
+        }
+
+        $(function () {
+            $("#date").datepicker({
+                dateFormat: "yy-mm-dd",
+                minDate: 0,
+                beforeShowDay: function (date) {
+                    var day = date.getDay();
+                    // تعطيل أيام الجمعة (5) والسبت (6)
+                    return [(day !== 5 && day !== 6), ''];
+                }
+            });
+
+            $('#bookingForm').on('submit', function (e) {
+                e.preventDefault();
+
+                const formData = {
+                    fullName: $('#fullName').val(),
+                    phone: $('#phone').val(),
+                    email: $('#email').val(),
+                    service: $('#service').val(),
+                    date: $('#date').val(),
+                    time: $('#time').val()
+                };
+
+                $.post("booking.php", formData, function (res) {
+                    if (res === "success") {
+                        $('#confName').text(formData.fullName);
+                        $('#confService').text(formData.service);
+                        $('#confDate').text(formData.date);
+                        $('#confTime').text(formData.time);
+                        showSection('confirmationSection');
+                        $('#bookingForm').trigger("reset");
+                    } else {
+                        alert("حدث خطأ أثناء إرسال البيانات");
+                    }
+                }).fail(function () {
+                    alert("حدث خطأ في الاتصال بالخادم");
+                });
+            });
+
+            // إظهار القسم الحالي عند تحديث الصفحة
+            const hash = window.location.hash.substr(1);
+            if (hash) {
+                showSection(hash);
+            } else {
+                showSection('homeSection');
+            }
+        });
+    </script>
+</body>
+
+</html>

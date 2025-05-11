@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>عيادة الابتسامة المشرقة - طب أسنان متكامل</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/smoothness/jquery-ui.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0099cc;
+            --secondary-color: #0077a3;
+            --accent-color: #ff6b6b;
+            --dark-color: #2c3e50;
+            --light-color: #f8f9fa;
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #f4fafe;
+            padding-top: 80px;
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+
+        /* شريط التنقل العصري */
+        .navbar {
+            background-color: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            padding: 0.8rem 1rem;
+            transition: var(--transition);
+        }
+
+        .navbar.scrolled {
+            padding: 0.5rem 1rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: var(--primary-color) !important;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-brand img {
+            height: 40px;
+            margin-left: 10px;
+        }
+
+        .nav-link {
+            font-weight: 600;
+            color: var(--dark-color) !important;
+            padding: 0.5rem 1rem !important;
+            margin: 0 0.2rem;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .nav-link:before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            right: 0;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover:before,
+        .nav-link.active:before {
+            width: 100%;
+            left: 0;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color) !important;
+        }
+
+        .navbar-toggler {
+            border: none;
+            padding: 0.5rem;
+        }
+
+        .navbar-toggler:focus {
+            box-shadow: none;
+        }
+
+        .navbar-toggler-icon {
+            background-image: none;
+            position: relative;
+            width: 24px;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .navbar-toggler-icon:before,
+        .navbar-toggler-icon:after {
+            content: '';
+            position: absolute;
+            width: 24px;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .navbar-toggler-icon:before {
+            transform: translateY(-6px);
+        }
+
+        .navbar-toggler-icon:after {
+            transform: translateY(6px);
+        }
+
+        .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
+            background-color: transparent;
+        }
+
+        .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon:before {
+            transform: rotate(45deg);
+        }
+
+        .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon:after {
+            transform: rotate(-45deg);
+        }
+
+        .btn-appointment {
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50px;
+            padding: 0.5rem 1.5rem;
+            font-weight: 600;
+            transition: var(--transition);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-appointment:hover {
+            background-color: transparent;
+            color: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* أقسام الصفحة */
+        section {
+            display: none;
+            padding: 5rem 0;
+            min-height: calc(100vh - 80px);
+        }
+
+        #homeSection {
+            display: flex;
+            align-items: center;
+            background: linear-gradient(rgba(0, 153, 204, 0.85), rgba(0, 153, 204, 0.85)),
+                url('assets/images/dental-hero.jpg') center/cover no-repeat;
+            color: white;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+        }
+
+        .btn-hero {
+            padding: 0.8rem 2rem;
+            font-size: 1.1rem;
+            margin: 0 0.5rem 1rem;
+            border-radius: 50px;
+            transition: var(--transition);
+        }
+
+        .btn-hero-primary {
+            background-color: white;
+            color: var(--primary-color);
+        }
+
+        .btn-hero-outline {
+            border: 2px solid white;
+            color: white;
+            background-color: transparent;
+        }
+
+        .btn-hero:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        /* قسم الحجز */
+        .form-section {
+            background: white;
+            border-radius: 15px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            margin: 0 auto;
+            max-width: 800px;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            position: relative;
+            text-align: center;
+        }
+
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-color);
+            margin: 0.8rem auto;
+            border-radius: 2px;
+        }
+
+        /* الخدمات */
+        .service-card {
+            border: none;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            height: 100%;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* التأكيد */
+        .confirmation-icon {
+            font-size: 5rem;
+            color: #28a745;
+            margin-bottom: 1.5rem;
+        }
+
+        /* التذييل */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 0.5rem;
+            transition: var(--transition);
+        }
+
+        .social-icons a:hover {
+            color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        /* زر الإدارة */
+        .admin-btn {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 1000;
+            background-color: var(--accent-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+        }
+
+        .admin-btn:hover {
+            transform: scale(1.1);
+            color: white;
+        }
+
+        /* تحسينات للأجهزة الصغيرة */
+        @media (max-width: 767.98px) {
+            .navbar {
+                padding: 0.7rem 1rem;
+            }
+
+            .navbar-brand {
+                font-size: 1.5rem;
+            }
+
+            .hero-title {
+                font-size: 2.2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            section {
+                padding: 3rem 0;
+            }
+
+            .form-section {
+                padding: 1.5rem;
+                border-radius: 10px;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* تحسينات خاصة باللمس */
+        button,
+        input,
+        select,
+        textarea {
+            touch-action: manipulation;
+        }
+
+        a,
+        button {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+
+        /* تأثير السلايدر */
+        /* إضافة أنماط جديدة لتأثير السلايدر */
+        .before-after-container {
+            padding: 5rem 0;
+            background-color: #f8f9fa;
+        }
+
+        .before-after-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .before-after-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-color);
+            margin: 0.8rem auto;
+            border-radius: 2px;
+        }
+
+        .before-after-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .before-after-item {
+            width: 100%;
+            max-width: 500px;
+            margin-bottom: 2rem;
+        }
+
+        .patient-name {
+            text-align: center;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+        }
+
+        .before-after {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .before-image,
+        .after-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .before-image img,
+        .after-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .after-image {
+            clip-path: inset(0 50% 0 0);
+        }
+
+        .slider {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 5px;
+            height: 100%;
+            background-color: #fff;
+            cursor: ew-resize;
+            z-index: 10;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .slider:before {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #fff;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        }
+
+        @media (max-width: 767.98px) {
+            .before-after {
+                height: 250px;
+            }
+
+            .before-after-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- شريط التنقل العصري -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#" onclick="showSection('homeSection')">
+                <img src="assets/images/logo.png" alt="شعار العيادة">
+                dent care
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarMain">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" onclick="showSection('homeSection')">الرئيسية</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" onclick="showSection('servicesSection')">خدماتنا</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" onclick="showSection('bookingSection')">حجز موعد</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" onclick="window.location.href='booking-lookup.php'">تتبع الحجز</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">اتصل بنا</a>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <a href="login.php" class="btn btn-outline-primary me-2">دخول الطبيب</a>
+                    <button class="btn btn-appointment" onclick="showSection('bookingSection')">
+                        <i class="fas fa-calendar-check me-2"></i>احجز الآن
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- الأقسام الرئيسية -->
+    <section id="homeSection">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">ابتسامتك تبدأ من هنا</h1>
+                <p class="hero-subtitle">نقدم أفضل خدمات طب الأسنان بأحدث التقنيات وبرعاية فريق طبي متخصص</p>
+                <div>
+                    <button class="btn btn-hero btn-hero-primary me-2" onclick="showSection('bookingSection')">
+                        <i class="fas fa-calendar-alt me-2"></i>احجز موعدك
+                    </button>
+                    <button class="btn btn-hero btn-hero-outline" onclick="showSection('servicesSection')">
+                        <i class="fas fa-teeth-open me-2"></i>خدماتنا
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="servicesSection">
+        <div class="container">
+            <h2 class="section-title">خدماتنا الطبية</h2>
+            <div class="row">
+                <div class="col-md-6 col-lg-4">
+                    <div class="card service-card">
+                        <div class="card-body text-center py-4">
+                            <div class="service-icon">
+                                <i class="fas fa-tooth"></i>
+                            </div>
+                            <h5 class="card-title">تنظيف الأسنان</h5>
+                            <p class="card-text">تنظيف احترافي لإزالة الجير والتصبغات والحفاظ على صحة اللثة</p>
+                            <button class="btn btn-outline-primary mt-2" onclick="selectService('تنظيف الأسنان')">اختيار
+                                الخدمة</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="card service-card">
+                        <div class="card-body text-center py-4">
+                            <div class="service-icon">
+                                <i class="fas fa-tooth"></i>
+                            </div>
+                            <h5 class="card-title">تبييض الأسنان</h5>
+                            <p class="card-text">حصول على ابتسامة أكثر بياضاً وإشراقاً بتقنيات آمنة وفعالة</p>
+                            <button class="btn btn-outline-primary mt-2" onclick="selectService('تبييض الأسنان')">اختيار
+                                الخدمة</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="card service-card">
+                        <div class="card-body text-center py-4">
+                            <div class="service-icon">
+                                <i class="fas fa-tooth"></i>
+                            </div>
+                            <h5 class="card-title">تقويم الأسنان</h5>
+                            <p class="card-text">تصحيح إطباق الأسنان وتحسين المظهر العام للفم والوجه</p>
+                            <button class="btn btn-outline-primary mt-2" onclick="selectService('تقويم الأسنان')">اختيار
+                                الخدمة</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="card service-card">
+                        <div class="card-body text-center py-4">
+                            <div class="service-icon">
+                                <i class="fas fa-tooth"></i>
+                            </div>
+                            <h5 class="card-title">حشوات وعلاج العصب</h5>
+                            <p class="card-text">علاج تسوس الأسنان وحماية العصب باستخدام أحدث المواد</p>
+                            <button class="btn btn-outline-primary mt-2"
+                                onclick="selectService('حشوات وعلاج العصب')">اختيار الخدمة</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="card service-card">
+                        <div class="card-body text-center py-4">
+                            <div class="service-icon">
+                                <i class="fas fa-tooth"></i>
+                            </div>
+                            <h5 class="card-title">زراعة الأسنان</h5>
+                            <p class="card-text">حل دائم وفعال لتعويض الأسنان المفقودة بنتائج طبيعية</p>
+                            <button class="btn btn-outline-primary mt-2" onclick="selectService('زراعة الأسنان')">اختيار
+                                الخدمة</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="card service-card">
+                        <div class="card-body text-center py-4">
+                            <div class="service-icon">
+                                <i class="fas fa-tooth"></i>
+                            </div>
+                            <h5 class="card-title">جراحة الفم</h5>
+                            <p class="card-text">إجراءات جراحية متخصصة للأسنان والفكين بأعلى معايير الأمان</p>
+                            <button class="btn btn-outline-primary mt-2" onclick="selectService('جراحة الفم')">اختيار
+                                الخدمة</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-5">
+                <button class="btn btn-primary btn-lg" onclick="showSection('bookingSection')">
+                    <i class="fas fa-calendar-check me-2"></i>احجز موعدك الآن
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section id="bookingSection">
+        <div class="container">
+            <div class="form-section">
+                <h2 class="section-title">حجز موعد</h2>
+                <form id="bookingForm">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="fullName" class="form-label">الاسم الكامل</label>
+                            <input type="text" class="form-control" id="fullName" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="phone" class="form-label">رقم الجوال</label>
+                            <input type="tel" class="form-control" id="phone" required>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="email" class="form-label">البريد الإلكتروني</label>
+                        <input type="email" class="form-control" id="email">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">طريقة استلام التأكيد</label>
+                        <div class="d-flex flex-wrap gap-3">
+                            <div class="form-check flex-grow-1">
+                                <input class="form-check-input" type="radio" name="confirmation_method" id="smsMethod"
+                                    value="sms" checked>
+                                <label class="form-check-label" for="smsMethod">
+                                    <i class="fas fa-sms me-2"></i>رسالة SMS
+                                </label>
+                            </div>
+                            <div class="form-check flex-grow-1">
+                                <input class="form-check-input" type="radio" name="confirmation_method"
+                                    id="whatsappMethod" value="whatsapp">
+                                <label class="form-check-label" for="whatsappMethod">
+                                    <i class="fab fa-whatsapp me-2"></i>واتساب
+                                </label>
+                            </div>
+                            <div class="form-check flex-grow-1">
+                                <input class="form-check-input" type="radio" name="confirmation_method" id="emailMethod"
+                                    value="email">
+                                <label class="form-check-label" for="emailMethod">
+                                    <i class="fas fa-envelope me-2"></i>البريد الإلكتروني
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="service" class="form-label">اختر الخدمة</label>
+                        <select class="form-select" id="service" required>
+                            <option value="">-- اختر الخدمة --</option>
+                            <option>تنظيف الأسنان</option>
+                            <option>تبييض الأسنان</option>
+                            <option>تقويم الأسنان</option>
+                            <option>حشوات وعلاج العصب</option>
+                            <option>زراعة الأسنان</option>
+                            <option>جراحة الفم</option>
+                        </select>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="date" class="form-label">التاريخ</label>
+                            <input type="text" class="form-control" id="date" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="time" class="form-label">الوقت</label>
+                            <select class="form-select" id="time" required>
+                                <option value="">-- اختر الوقت --</option>
+                                <option>10:00 صباحًا</option>
+                                <option>12:00 ظهرًا</option>
+                                <option>2:00 مساءً</option>
+                                <option>4:00 مساءً</option>
+                                <option>6:00 مساءً</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100 mt-3 py-3">
+                        <i class="fas fa-paper-plane me-2"></i>تأكيد الحجز
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section id="confirmationSection">
+        <div class="container text-center">
+            <div class="form-section">
+                <div class="confirmation-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h2 class="section-title">تم حجز موعدك بنجاح!</h2>
+                <div class="confirmation-details">
+                    <p><strong>الاسم:</strong> <span id="confName"></span></p>
+                    <p><strong>الخدمة:</strong> <span id="confService"></span></p>
+                    <p><strong>التاريخ:</strong> <span id="confDate"></span></p>
+                    <p><strong>الوقت:</strong> <span id="confTime"></span></p>
+                </div>
+                <div class="alert alert-info mt-4">
+                    <i class="fas fa-info-circle me-2"></i>
+                    ستصلك رسالة تأكيد بالطريقة التي اخترتها قريباً
+                </div>
+                <button class="btn btn-outline-primary mt-4 px-4" onclick="showSection('homeSection')">
+                    <i class="fas fa-home me-2"></i>العودة للرئيسية
+                </button>
+            </div>
+        </div>
+    </section>
+    <!-- تاثير السلايد -->
+    <!-- قسم جديد لصور قبل وبعد -->
+    <div id="beforeAfterSection" class="before-after-container">
+        <div class="container">
+            <h2 class="before-after-title">نتائج عملنا تتحدث عنا</h2>
+            <p class="text-center mb-5">شاهد الفرق الذي أحدثناه لمرضانا من خلال مجموعة من الحالات الحقيقية</p>
+
+            <div class="before-after-wrapper">
+                <!-- مريض 1 -->
+                <div class="before-after-item">
+                    <h4 class="patient-name">حالة تقويم الأسنان</h4>
+                    <div class="before-after">
+                        <div class="before-image">
+                            <img src="assets/images/before.jpg" alt="قبل تقويم الأسنان" />
+                        </div>
+                        <div class="after-image">
+                            <img src="assets/images/after.jpg" alt="بعد تقويم الأسنان" />
+                        </div>
+                        <div class="slider"></div>
+                    </div>
+                </div>
+
+                <!-- مريض 2 -->
+                <div class="before-after-item">
+                    <h4 class="patient-name">حالة تبييض الأسنان</h4>
+                    <div class="before-after">
+                        <div class="before-image">
+                            <img src="assets/images/before.jpg" alt="قبل تبييض الأسنان" />
+                        </div>
+                        <div class="after-image">
+                            <img src="assets/images/after.jpg" alt="بعد تبييض الأسنان" />
+                        </div>
+                        <div class="slider"></div>
+                    </div>
+                </div>
+
+                <!-- مريض 3 -->
+                <div class="before-after-item">
+                    <h4 class="patient-name">حالة زراعة الأسنان</h4>
+                    <div class="before-after">
+                        <div class="before-image">
+                            <img src="assets/images/before.jpg" alt="قبل زراعة الأسنان" />
+                        </div>
+                        <div class="after-image">
+                            <img src="assets/images/after.jpg" alt="بعد زراعة الأسنان" />
+                        </div>
+                        <div class="slider"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <footer id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5>عن العيادة</h5>
+                    <p>نقدم خدمات طب الأسنان بأعلى معايير الجودة والرعاية الطبية باستخدام أحدث التقنيات العالمية.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>مواعيد العمل</h5>
+                    <p>السبت - الخميس: 9 صباحاً - 9 مساءً</p>
+                    <p>الجمعة: مغلق</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>اتصل بنا</h5>
+                    <p><i class="fas fa-phone me-2"></i> 0123456789</p>
+                    <p><i class="fas fa-envelope me-2"></i> info@smileclinic.com</p>
+                    <div class="social-icons mt-3">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center">
+                <p class="mb-0">جميع الحقوق محفوظة &copy; 2023 - عيادة الابتسامة المشرقة</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="login.php" class="admin-btn" title="دخول الطبيب">
+        <i class="fas fa-user-md"></i>
+    </a>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // إظهار وإخفاء الأقسام
+        function showSection(id) {
+            $('section').hide();
+            $('#' + id).fadeIn(300);
+            if (id === 'homeSection') {
+                $('html, body').animate({ scrollTop: 0 }, 'fast');
+            } else {
+                $('html, body').animate({ scrollTop: $('#' + id).offset().top - 70 }, 'fast');
+            }
+
+            // تحديث حالة العنصر النشط في القائمة
+            $('.nav-link').removeClass('active');
+            if (id === 'homeSection') {
+                $('.nav-link:first').addClass('active');
+            }
+        }
+
+        // اختيار خدمة من القائمة
+        function selectService(service) {
+            $('#service').val(service);
+            showSection('bookingSection');
+        }
+
+        // تأثير التمرير لشريط التنقل
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 50) {
+                $('.navbar').addClass('scrolled');
+            } else {
+                $('.navbar').removeClass('scrolled');
+            }
+        });
+
+        // تهيئة التقويم
+        $(function () {
+            $("#date").datepicker({
+                dateFormat: "yy-mm-dd",
+                minDate: 0,
+                beforeShowDay: function (date) {
+                    var day = date.getDay();
+                    return [(day !== 5 && day !== 6), ''];
+                }
+            });
+
+            // معالجة إرسال النموذج
+            $('#bookingForm').on('submit', function (e) {
+                e.preventDefault();
+
+                const formData = {
+                    fullName: $('#fullName').val(),
+                    phone: $('#phone').val(),
+                    email: $('#email').val(),
+                    service: $('#service').val(),
+                    date: $('#date').val(),
+                    time: $('#time').val(),
+                    confirmation_method: $('input[name="confirmation_method"]:checked').val()
+                };
+
+                $.ajax({
+                    url: "booking.php",
+                    type: "POST",
+                    dataType: "json",
+                    data: formData,
+                    success: function (res) {
+                        if (res.status === 'success') {
+                            if (res.redirect) {
+                                window.open(res.redirect, '_blank');
+                            }
+
+                            $('#confName').text(formData.fullName);
+                            $('#confService').text(formData.service);
+                            $('#confDate').text(formData.date);
+                            $('#confTime').text(formData.time);
+                            showSection('confirmationSection');
+                            $('#bookingForm').trigger("reset");
+                        } else {
+                            alert(res.message || "حدث خطأ أثناء إرسال البيانات");
+                        }
+                    },
+                    error: function () {
+                        alert("حدث خطأ في الاتصال بالخادم");
+                    }
+                });
+            });
+
+            // التحقق من البريد الإلكتروني عند اختياره
+            $('input[name="confirmation_method"]').change(function () {
+                if ($(this).val() === 'email' && $('#email').val().trim() === '') {
+                    alert('الرجاء إدخال البريد الإلكتروني أولاً');
+                    $(this).prop('checked', false);
+                    $('#smsMethod').prop('checked', true);
+                    $('#email').focus();
+                }
+            });
+
+            // إظهار القسم الحالي عند التحميل
+            const hash = window.location.hash.substr(1);
+            if (hash) {
+                showSection(hash);
+            } else {
+                showSection('homeSection');
+            }
+        });
+    </script>
+    <script>
+        // تحديث سكربت السلايدر ليعمل مع جميع العناصر
+        $(document).ready(function () {
+            $(".before-after").each(function () {
+                let slider = $(this).find(".slider");
+                let afterImage = $(this).find(".after-image");
+                let beforeAfter = $(this);
+
+                slider.on("mousedown touchstart", function (e) {
+                    e.preventDefault();
+                    let startX = (e.type === 'touchstart') ? e.originalEvent.touches[0].pageX : e.pageX;
+
+                    $(document).on("mousemove touchmove", function (e) {
+                        e.preventDefault();
+                        let currentX = (e.type === 'touchmove') ? e.originalEvent.touches[0].pageX : e.pageX;
+                        let diff = currentX - startX;
+                        let containerOffset = beforeAfter.offset().left;
+                        let containerWidth = beforeAfter.width();
+                        let newPosition = (currentX - containerOffset);
+
+                        // تحديد الحدود
+                        newPosition = Math.max(0, Math.min(newPosition, containerWidth));
+
+                        // تحديث عرض الصورة بعد وموقع السلايدر
+                        let percentage = (newPosition / containerWidth) * 100;
+                        afterImage.css("clip-path", `inset(0 ${100 - percentage}% 0 0)`);
+                        slider.css("left", `${percentage}%`);
+                    });
+
+                    $(document).on("mouseup touchend", function () {
+                        $(document).off("mousemove touchmove");
+                        $(document).off("mouseup touchend");
+                    });
+                });
+            });
+
+            // إضافة رابط في القائمة للقسم الجديد
+            $('.navbar-nav').append('<li class="nav-item"><a class="nav-link" onclick="scrollToBeforeAfter()">حالات مرضانا</a></li>');
+        });
+
+        // وظيفة للتمرير إلى قسم قبل وبعد
+        function scrollToBeforeAfter() {
+            $('html, body').animate({
+                scrollTop: $('#beforeAfterSection').offset().top - 70
+            }, 'fast');
+        }
+    </script>
+</body>
+
+</html>
