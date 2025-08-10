@@ -12,3 +12,7 @@ CREATE TABLE appointments (
 
 تستخدم "clinic_db" root
 مع كلمة مرور فارغة لـ 
+
+للتسجيل الى لوحة التحكم 
+كلمة المرور
+doctor123
